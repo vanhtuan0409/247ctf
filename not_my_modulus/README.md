@@ -1,0 +1,11 @@
+- open wireshark
+- select packet with `Server Hello, Certificate, Server Hello Done`
+  - expand information, select `Transport Layer Security`
+  - Find `Certificate .... (id-at-commonName ...)`
+  - Right click, select `Export Bytes` and save as `pub_cert.der`
+- Extract public key modulus
+  - `openssl x509 -inform der -in pub_cert.der -noout -modulus`
+- Iter all private key and find 1 with matching modulus
+  - `find ./keys -type f -printf '%p' -exec openssl rsa -in {} -noout -modulus \; | grep <modulus>`
+- Follow guide to decode TLS traffic using Wireshark
+  - https://support.citrix.com/article/CTX116557
