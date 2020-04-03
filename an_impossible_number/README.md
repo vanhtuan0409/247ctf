@@ -1,0 +1,5 @@
+- The answer is c INT_MAX value, which is 2147483647
+- When Start challenge, you will have an TCP address to connect to
+  - Use `telnet` to connect to that address
+  - Input the INT_MAX value
+  - The flag will show up
